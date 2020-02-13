@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from PIL import Image
+from datetime import date
 
 
 class Post(models.Model):
@@ -28,7 +29,7 @@ class Post(models.Model):
     coordinator = models.CharField(
         max_length=100, verbose_name="Coordinator :")
     is_complete = models.BooleanField(default=False)
-    date_of_contact = models.DateField()
+    date_of_contact = models.DateField(default=date.today)
     student_surname = models.CharField(
         max_length=100, verbose_name="Student's Surname :")
     hostfamily = models.CharField(
@@ -142,7 +143,7 @@ class Post(models.Model):
     def save(self):
         super().save()
 
-        img = Image.open(self.image.path)
+        img = Image.open(self.photo_main.path)
 
     def get_absolute_url(self):
         return reverse('post_detail', kwargs={'pk': self.pk})
