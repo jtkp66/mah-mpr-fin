@@ -104,11 +104,11 @@ class Post(models.Model):
         verbose_name="Coordinator's comments re: Host Family progress this month (REQUIRED):", blank=True)
     # School Progress Report
     sch_school_name = models.CharField(
-        verbose_name="SCHOOL'S NAME", max_length=50)
+        verbose_name="SCHOOL'S NAME", max_length=50 blank=True)
     sch_student_name = models.CharField(
-        verbose_name="Student's Name", max_length=100)
+        verbose_name="Student's Name", max_length=100 blank=True)
     sch_1a = models.CharField(
-        verbose_name="School Contact's Name:", max_length=100)
+        verbose_name="School Contact's Name:", max_length=100 blank=True)
     sch_1b = models.CharField(
         verbose_name="School Contact's Title", max_length=100, blank=True)
     sch_2 = models.CharField(max_length=20, choices=STATUS_CHOICES,
@@ -129,7 +129,7 @@ class Post(models.Model):
     sch_5 = models.CharField(
         max_length=10, choices=YES_OR_NO_CHOICES, verbose_name="Does the student need additional help at school, such as tutoring, or is there any area(s) MAH can counsel the student to help him/her improve in this area?", blank=True)
     sch_5a = models.CharField(
-        max_length=100, verbose_name="School's Comments re:")
+        max_length=100, verbose_name="School's Comments re:" blank=True)
     sch_6 = models.CharField(
         max_length=10, choices=YES_OR_NO_CHOICES, verbose_name="Is the student receiving a 'C' or better in each class?", blank=True)
     sch_classes_grades = models.TextField(
