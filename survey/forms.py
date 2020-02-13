@@ -4,18 +4,6 @@ from .models import Post
 
 
 class PostForm(forms.ModelForm):
-    STATUS_CHOICES = [
-        ('excellent', 'Excellent'),
-        ('very good', 'Very Good'),
-        ('satisfactory', 'Satisfactory'),
-        ('needs improvement', 'Needs Improvement'),
-    ]
-    st_6 = forms.MultipleChoiceField(
-        required=False,
-        widget=forms.CheckboxSelectMultiple,
-        choices=STATUS_CHOICES,
-        label="How is it going?",
-    )
 
     class Meta:
         model = Post
@@ -136,8 +124,7 @@ class PostForm(forms.ModelForm):
         }
         widgets = {
             "coordinator": forms.TextInput(attrs={"class": "form-control"}),
-            # "st_1": forms.Select(attrs={"choices": "STATUS_CHOICES"}),
-            'st_1a': forms.Textarea(attrs={'cols': 150, 'rows': 5}),
+            'st_1a': forms.Textarea(attrs={'cols': 131, 'rows': 5}),
             'date_of_contact': forms.SelectDateWidget()
         }
 

@@ -7,13 +7,13 @@
       <div class="col-md-12 mx-auto">
         <div class="card">
           <div class="card-header bg-primary text-white">
-            <h4>Monthly Progress Report</h4>
+            <h4>Monthly Progress Reports</h4>
           </div>
           <div class="card-body">
             {% include 'partials/_alerts.html' %}
             <form class="form">
               {% csrf_token %}
-              <h2>Student Progress</h2>
+              <h2 class="text-danger text-center">Student Progress Report</h2>
               <div class="form-group">
                 <label for="coordinator">Date(s) of Contact(Month/Day/Year):</label>
                 <input
@@ -47,11 +47,12 @@
                   type="text"
                   name="hostfamily"
                   class="form-control"
+                  value="{{ post.hostfamily }}"
                   required
                 />
               </div>
               <div class="form-group">
-                <label for="hostfamily">Student's English Name</label>
+                <label for="student_eng_name">Student's English Name</label>
                 <input
                   type="text"
                   name="student_eng_name"
@@ -60,8 +61,9 @@
                 />
               </div>
               <div class="form-group">
+                <label for="st_1">* How are you getting along with your host family?</label>
                 <select name="st_1">
-                    <option value="{{ post.st_1 }}">* How are you getting along with your host family?</option>
+                    <option value="{{ post.st_1 }}">{{ post.st_1 }}</option>
                     <option value="excellent">Excellent</option>
                     <option value="very good">Very Good</option>
                     <option value="satisfactory">Satisfactory</option>
@@ -72,6 +74,7 @@
                 <small class="form-text">Comments:
                 </small>
                 <textarea name="st_1a" value="{{ post.st_1a }}">
+                  {{ post.st_1a }}
                 </textarea>
               </div>
               <div class="form-group">
@@ -93,8 +96,9 @@
                 />
               </div>
               <div class="form-group">
+                <label for="st_4">* Do you feel you are improving your conversational english?</label>
                 <select name="st_4">
-                    <option value="{{ post.st_4 }}">* Do you feel you are improving your conversational english?</option>
+                    <option value="{{ post.st_4 }}">{{ post.st_4 }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -103,17 +107,20 @@
                 <small class="form-text">If yes, provide examples of how you have improved your conversational level of English:
                 </small>
                 <textarea name="st_4a" value="{{ post.st_4a }}">
+                  {{ post.st_4a }}
                 </textarea>
               </div>
               <div class="form-group">
                 <small class="form-text">If no, provide examples of areas you would like to improve upon to help strengthen your level of English:
                 </small>
                 <textarea name="st_4b" value="{{ post.st_4b }}">
+                  {{ post.st_4b }}
                 </textarea>
               </div>
               <div class="form-group">
+                <label for="st_5">* Have you made new American friends & interests in the community or school?</label>
                 <select name="st_5">
-                    <option value="{{ post.st_5 }}">* Have you made new American friends & interests in the community or school?</option>
+                    <option value="{{ post.st_5 }}">{{ post.st_5 }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -122,11 +129,13 @@
                 <small class="form-text">If yes, provide details:
                 </small>
                 <textarea name="st_5a" value="{{ post.st_5a }}">
+                  {{ post.st_5a }}
                 </textarea>
               </div>
               <div class="form-group">
+                <label for="st_6">* How do you feel you are doing in school?</label>
                 <select name="st_6">
-                    <option value="{{ post.st_6 }}">* How do you feel you are doing in school?</option>
+                    <option value="{{ post.st_6 }}">{{ post.st_6 }}</option>
                     <option value="excellent">Excellent</option>
                     <option value="very good">Very Good</option>
                     <option value="satisfactory">Satisfactory</option>
@@ -134,7 +143,7 @@
                 </select>  
               </div>
               <div class="form-group">
-                <label for="coordinator">What is your favorite subject this month?</label>
+                <label for="st_6a">What is your favorite subject this month?</label>
                 <input
                   type="text"
                   name="st_6a"
@@ -143,7 +152,7 @@
                 />
               </div>
               <div class="form-group">
-                <label for="coordinator">What subject are you having trouble with this month?</label>
+                <label for="st_6b">What subject are you having trouble with this month?</label>
                 <input
                   type="text"
                   name="st_6b"
@@ -152,15 +161,17 @@
                 />
               </div>
               <div class="form-group">
+                <label for="st_7">* Did you experience any issues this month with your host family or at School?</label>
                 <select name="st_7">
-                    <option value="0">* Did you experience any issues this month with your host family or at School?</option>
+                    <option value="{{ post.st_7 }}">{{ post.st_7 }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
               </div>
               <div class="form-group">
+                <label for="st_7a">Is there anything you would like to talk about or need help with?</label>
                 <select name="st_7a">
-                    <option value="0">Is there anything you would like to talk about or need help with?</option>
+                    <option value="{{ post.st_7a }}">{{ post.st_7a }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -169,30 +180,33 @@
                 <small class="form-text">Student's Comments:
                 </small>
                 <textarea name="st_7b" value="{{ post.st_7b }}">
+                  {{ post.st_7b }}
                 </textarea>
               </div>
               <div class="form-group">
                 <small class="form-text">Coordinator's comments re: Student's progress this month (REQUIRED):
                 </small>
-                <textarea name="st_coordinator_comments">
+                <textarea name="st_coordinator_comments" value="{{ post.st_coordinator_comments }}">
+                  {{ post.st_coordinator_comments }}
                 </textarea>
               </div>
 
               <hr />
 
-              <h2>Host Family Report</h2>
+              <h2 class="text-danger text-center">Host Family Report</h2>
               <div class="form-group">
-                <label for="student">HOST'S FAMILY NAME:</label>
+                <label for="hf_hostfamily_name">* Host Family Name:</label>
                 <input
                   type="text"
                   name="hf_hostfamily_name"
                   class="form-control"
-                  required
+                  value="{{ post.hf_hostfamily_name }}"
                 />
               </div>
               <div class="form-group">
+                <label for="hf_1">How is your relationship with your student?</label>
                 <select name="hf_1">
-                    <option value="0">How is your relationship with your student?</option>
+                    <option value="{{ post.hf_1 }}">{{ post.hf_1 }}</option>
                     <option value="Developer">Excellent</option>
                     <option value="Junior Developer">Very Good</option>
                     <option value="Manager">Satisfactory</option>
@@ -202,7 +216,8 @@
               <div class="form-group">
                 <small class="form-text">Comments:
                 </small>
-                <textarea name="hf_1a">
+                <textarea name="hf_1a" value="{{ post.hf_1a }}">
+                  {{ post.hf_1a }}
                 </textarea>
               </div>
               <div class="form-group">
@@ -211,12 +226,13 @@
                   type="text"
                   name="hf_2"
                   class="form-control"
-                  
+                  value="{{ post.hf_2 }}"
                 />
               </div>
               <div class="form-group">
+                <label for="hf_3">* Do you feel your student is improving his/her level of conversational english?</label>
                 <select name="hf_3">
-                  <option value="0">* Do you feel your student is improving his/her level of conversational english?</option>
+                  <option value="{{ post.hf_2 }}">{{ post.hf_2 }}</option>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>  
@@ -224,18 +240,21 @@
               <div class="form-group">
                 <small class="form-text">If yes, provide examples of how your student has improved in this area:
                 </small>
-                <textarea name="hf_3a">
+                <textarea name="hf_3a" value="{{ post.hf_3 }}">
+                  {{ post.hf_3 }}
                 </textarea>
               </div>
               <div class="form-group">
                 <small class="form-text">If no, provide examples of specific areas you feel your student can improve upon to help strengthen his/her level of English:
                 </small>
-                <textarea name="st_3b">
+                <textarea name="st_3b" value="{{ post.hf_3 }}">
+                  {{ post.hf_3 }}
                 </textarea>
               </div>
               <div class="form-group">
+                <label for="hf_4">Has your student interacted with your family this month?</label>
                 <select name="hf_4">
-                    <option value="0">Has your student interacted with your family this month?</option>
+                    <option value="{{ post.hf_4 }}">{{ post.hf_4 }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -244,17 +263,20 @@
                 <small class="form-text">If yes, provide examples of how your student interacted with your family this month:
                 </small>
                 <textarea name="hf_4a">
+                  {{ post.hf_4a }}
                 </textarea>
               </div>
               <div class="form-group">
                 <small class="form-text">If no, provide examples of how your student can better interact with your family:
                 </small>
                 <textarea name="st_4b">
+                  {{ post.hf_4b }}
                 </textarea>
               </div>
               <div class="form-group">
+                <label for="hf_5">Has your student made plans with any American friends or shown any interest in events in the community?</label>
                 <select name="hf_5">
-                    <option value="0">Has your student made plans with any American friends or shown any interest in events in the community?</option>
+                    <option value="{{ post.hf_5 }}">{{ post.hf_5 }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -263,11 +285,13 @@
                 <small class="form-text">If yes, provide details:
                 </small>
                 <textarea name="hf_5a">
+                  {{ post.hf_5a }}
                 </textarea>
               </div>
               <div class="form-group">
+                <label for="hf_6">Does your student obey the rules at home this month?</label>
                 <select name="hf_6">
-                    <option value="0">Does your student obey the rules at home this month?</option>
+                    <option value="{{ post.hf_6 }}">{{ post.hf_6 }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -276,67 +300,76 @@
                 <small class="form-text">If no, please provide details so MAH can counsel the student to better improve in this area:
                 </small>
                 <textarea name="hf_6a">
+                  {{ post.hf_6a }}
                 </textarea>
               </div>
               <div class="form-group">
+                <label for="hf_7">Rate your hosting experience so far:</label>
                 <select name="hf_7">
-                    <option value="0">Rate your hosting experience so far:</option>
-                    <option value="Developer">Excellent</option>
-                    <option value="Junior Developer">Very Good</option>
-                    <option value="Manager">Satisfactory</option>
-                    <option value="Manager">Needs Improvement</option>
+                    <option value="{{ post.hf_7 }}">{{ post.hf_7 }}</option>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Very Good">Very Good</option>
+                    <option value="Satisfactory">Satisfactory</option>
+                    <option value="Needs Improvement">Needs Improvement</option>
                 </select>  
               </div>
               <div class="form-group">
                 <small class="form-text">Host Family's Comments:
                 </small>
                 <textarea name="hf_7a">
+                  {{ post.hf_7a }}
                 </textarea>
               </div>
               <div class="form-group">
                 <small class="form-text">Coordinator's comments re: Host Family progress this month (REQUIRED):
                 </small>
                 <textarea name="hf_coordinator_comments">
+                  {{ post.hf_coordinator_comments }}
                 </textarea>
               </div>
 
               <hr />
 
-              <h2>School Progress</h2>
+              <h2 class="text-danger text-center">School Progress Report</h2>
               <div class="form-group">
                 <label for="sch_school_name">School's Name</label>
                 <input
                   type="text"
                   name="sch_school_name"
                   class="form-control"
+                  value="{{ post.sch_school_name }}"
                 />
               </div>
               <div class="form-group">
-                <label for="student">Student's Name</label>
+                <label for="sch_student_name">Student's Name</label>
                 <input
                   type="text"
                   name="sch_student_name"
                   class="form-control"
+                  value="{{ post.sch_student_name }}"
                 />
               </div>
               <div class="form-group">
-                <label for="student">List the name and title of the contact person you spoke with at the school:</label>
+                <label for="sch_1a">List the name and title of the contact person you spoke with at the school:</label>
                 <input
                   type="text"
                   name="sch_1a"
                   class="form-control"
                   placeholder="Contact Name"
+                  value="{{ post.sch_1a }}"
                 />
                 <input
                   type="text"
                   name="sch_1b"
-                  class="form-control mt-2"
+                  class="form-control"
                   placeholder="Contact Title"
+                  value="{{ post.sch_1b }}"
                 />
               </div>
               <div class="form-group">
+                <label for="sch_2">What is the school's impression of the student's academic performance this month?</label>
                 <select name="sch_2">
-                    <option value="0">What is the school's impression of the student's academic performance this month?</option>
+                    <option value="{{ post.sch_2 }}">{{ post.sch_2 }}</option>
                     <option value="Developer">Excellent</option>
                     <option value="Junior Developer">Very Good</option>
                     <option value="Manager">Satisfactory</option>
@@ -347,11 +380,13 @@
                 <small class="form-text">School's feedback about student's academic performance this month:
                 </small>
                 <textarea name="sch_2a">
+                  {{ post.sch_2a }}
                 </textarea>
               </div>
               <div class="form-group">
+                <label for="sch_3">Has the student had any accomplishments (e.g., honor roll, athletics, club participation)?</label>
                 <select name="sch_3">
-                    <option value="0">Has the student had any accomplishments (e.g., honor roll, athletics, club participation)?</option>
+                    <option value="{{ post.sch_3 }}">{{ post.sch_3 }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -360,24 +395,33 @@
                 <small class="form-text">Please list details re: accomplishments:
                 </small>
                 <textarea name="sch_3a">
+                  {{ post.sch_3a }}
                 </textarea>
               </div>
               <div class="form-group">
+                <label for="sch_4">Has the student missed any days from school?</label>
                 <select name="sch_4">
-                  <option value="0">Has the student missed any days from school</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
+                    <option value="{{ post.sch_4 }}">{{ post.sch_4 }}</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>  
+              </div>
+              <div class="form-group">
+                <small for="sch_4">Were these excused absences?</small>
                 <select name="sch_4b">
-                  <option value="0">Were these excused absences?</option>
+                  <option value="{{ post.sch_4b }}">{{ post.sch_4b }}</option>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
+              </div>
+              <div class="form-group">
+                <small for="sch_4"># of Days Missed</small>
                 <input
                   type="number"
                   name="sch_4a"
                   class="form-control"
                   placeholder="# of Days Missed"
+                  value="{{ post.sch_4a }}"
                 /> 
               </div>
               <div class="form-group"></div>
@@ -386,11 +430,13 @@
                   type="text"
                   name="sch_4c"
                   class="form-control"
+                  value="{{ post.sch_4c }}"
                 />
               </div>
               <div class="form-group">
-                <select name="sch_5">
-                    <option value="0">Does the student need additional help at school, such as tutoring, or is there any area(s) MAH can counsel the student to help him/her improve in this area?</option>
+                <label for="sch_5">Does the student need additional help at school, such as tutoring, or is there any area(s) MAH can counsel the student to help him/her improve in this area?</label>
+                <select class="form-control" name="sch_5">
+                    <option value="{{ post.sch_5 }}">{{ post.sch_5 }}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -400,12 +446,13 @@
                 <input
                   type="text"
                   name="sch_5a"
-                  class="form-control"
+                  value="{{ post.sch_5a}}"
                 />
               </div>
               <div class="form-group">
-                <select name="sch_6">
-                    <option value="0">Is the student receiving a "C" or better in each class?</option>
+                <label for="sch_6">Is the student receiving a "C" or better in each class?</label>
+                <select class="form-control" name="sch_6">
+                    <option value="{{post.sch_6}}">{{post.sch_6}}</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>  
@@ -417,12 +464,11 @@
                     {{ post.sch_classes_grades }}
                 </textarea>
               </div>
-              <div class="form-group ml-6">
-                <input class="ml-6" type="checkbox" name="is_complete" value="{{ post.is_complete }}" />
-                <small for="is_complete">Please check to Complete the Report before submitting</small>
+              <div class="form-group">
+                <small for="is_complete">Your form is complete</small>
+                <input class="form-control" type="text" name="is_complete" value="{{ post.is_complete }}" />
+                
               </div>
-              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post_edit' post.id %}">Update</a>
-              <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span>Update</a>
             </form>
           </div>
         </div>

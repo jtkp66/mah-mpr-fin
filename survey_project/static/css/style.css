@@ -19,7 +19,8 @@ textarea {
 }
 
 h2 {
-  border: 4px dotted blue;
+  border: 1px solid black;
+  border-style: outset;
 }
 
 #post-form {
@@ -116,7 +117,7 @@ img {
   margin-right: 0.4rem; }
 
 #showcase {
-  background: url(../img/showcase.jpg) no-repeat top center fixed/cover;
+  background: url(../img/building.jpg) no-repeat top center fixed/cover;
   position: relative;
   min-height: 650px;
   color: #fff;
@@ -132,7 +133,7 @@ img {
     left: 0;
     min-height: 400px;
     width: 100%;
-    background: rgba(70, 25, 25, 0.8); }
+    background: rgba(167, 21, 21, 0.8); }
 
 #services {
   background: url(../img/building.jpg) no-repeat top center fixed/cover;

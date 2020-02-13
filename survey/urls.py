@@ -11,7 +11,7 @@ urlpatterns = [
     path('<int:post_id>', views.post, name='survey2'),
     path('new/', PostCreateView.as_view(), name='survey-new'),
     path('update_task/<str:pk>/', views.updateTask, name="update_task"),
-    # path('new2/', views.post_form, name='post_form'),
+    path('new2/', views.post_form, name='post_form'),
     path('<int:pk>/', PostDetailView.as_view(), name='post_detail'),
     path('<int:pk>/edit/', views.post_edit, name='post_edit'),
 ]

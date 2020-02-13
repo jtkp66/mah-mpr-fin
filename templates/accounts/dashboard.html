@@ -35,12 +35,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2>Welcome, {{ user.first_name }}</h2>
+        <h1 class="text-primary">Welcome, {{ user.first_name }}</h1>
         {% if posts %}
         <p>Here are your open surveys</p>
         <table class="table">
           <thead>
-            <tr>
+            <tr class="text-primary">
               <th scope="col">Id</th>
               <th scope="col">Coordinator</th>
               <th scope="col">Student</th>

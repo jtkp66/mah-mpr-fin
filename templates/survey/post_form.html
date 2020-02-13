@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+
+{% block title %} | Create{%endblock %}
+
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -8,23 +11,17 @@
         <div class="col-md-12 mx-auto">
           <div class="card">
             <div class="card-header bg-primary text-white">
-              <h4>Monthly Progress Report</h4>
+              <h3>Monthly Progress Reports</h3>
             </div>
             <div class="card-body">
               {% include 'partials/_alerts.html' %}
-              
-              
-                
-                    <form method="POST" class="post-form" id="post-form">{% csrf_token %}
-                        <div class="form-group">
-                            {{ form|crispy }}
-                        </div>
-                        <button type="submit" class="save btn btn-default">Save</button>
-                    </form>
-                
-                
-                
-              
+                <form method="POST" class="post-form" id="post-form" enctype="multipart/form-data">{% csrf_token %}
+                  <button type="submit" class="save btn btn-danger btn-block mb-4">Save</button>
+                    <div class="form-group">
+                      {{ form|crispy }}
+                    </div>
+                  <button type="submit" class="save btn btn-danger btn-block">Save</button>
+                </form>
             </div>
           </div>
         </div>

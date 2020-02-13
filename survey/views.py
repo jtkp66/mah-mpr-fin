@@ -27,7 +27,7 @@ def post_form(request):
 		form = PostForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('/')
+			return redirect('post_detail', pk=post.pk)
 
 	context = {'form':form}
 	return render(request, 'survey/post_form.html', context)    
@@ -56,9 +56,9 @@ def post(request, post_id):
 
     return render(request, 'survey/survey2.html', context)
 
-def survey_new2(request):
+# def survey_new2(request):
 
-    return render(request, 'survey/survey-new2.html')
+#     return render(request, 'survey/survey-new2.html')
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -127,7 +127,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 def post_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -144,7 +144,7 @@ def updateTask(request, pk):
 	form = PostForm(instance=post)
 
 	if request.method == 'POST':
-		form = PostForm(request.POST, instance=post)
+		form = PostForm(request.POST, request.FILES, instance=post)
 		if form.is_valid():
 			form.save()
 			return redirect('dashboard')
