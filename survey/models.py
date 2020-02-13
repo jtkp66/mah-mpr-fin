@@ -108,7 +108,7 @@ class Post(models.Model):
     sch_student_name = models.CharField(
         verbose_name="Student's Name", max_length=100, blank=True)
     sch_1a = models.CharField(
-        verbose_name="School Contact's Name:", max_length=100 blank=True)
+        verbose_name="School Contact's Name:", max_length=100, blank=True)
     sch_1b = models.CharField(
         verbose_name="School Contact's Title", max_length=100, blank=True)
     sch_2 = models.CharField(max_length=20, choices=STATUS_CHOICES,
