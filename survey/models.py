@@ -28,7 +28,7 @@ class Post(models.Model):
     coordinator = models.CharField(
         max_length=100, verbose_name="Coordinator :")
     is_complete = models.BooleanField(default=False)
-    date_of_contact = models.CharField(max_length=20, default='0000000')
+    date_of_contact = models.DateField()
     student_surname = models.CharField(
         max_length=100, verbose_name="Student's Surname :")
     hostfamily = models.CharField(
